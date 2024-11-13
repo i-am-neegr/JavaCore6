@@ -22,7 +22,7 @@ public class EmployeeService implements EmployeeServiceInterface {
         return employeeList;
     }
 
-    public boolean validEmployee(Employee employee) {
+    private boolean validEmployee(Employee employee) {
         for (Employee emp : employeeList) {
             if (emp.equals(employee)) {
                 return false;
@@ -31,11 +31,11 @@ public class EmployeeService implements EmployeeServiceInterface {
         return true;
     }
 
-    public int freePlaces() {
+    private int freePlaces() {
         return maxEmployees - employeeList.size();
     }
 
-    public boolean isListFull() {
+    private boolean isListFull() {
         return (freePlaces() == 0);
     }
 
@@ -45,7 +45,7 @@ public class EmployeeService implements EmployeeServiceInterface {
             throw new EmployeeStorageIsFullException("Employee list is full");
         }
 
-        Employee employee = new Employee(firstName, lastName);
+        Employee employee = new Employee(firstName, lastName, 10_000, 1);
         if (validEmployee(employee)) {
             employeeList.add(employee);
         } else {
@@ -80,5 +80,9 @@ public class EmployeeService implements EmployeeServiceInterface {
         } else {
             return employee;
         }
+    }
+
+    public List<Employee> getEmployees() {
+        return this.employeeList;
     }
 }
