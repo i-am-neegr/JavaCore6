@@ -6,14 +6,10 @@ public class Employee {
 
     final private String firstName;
     final private String lastName;
-    final private int salary;
-    final private int departmentID;
 
-    public Employee(String firstName, String lastName, int salary, int departmentID) {
+    public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.salary = salary;
-        this.departmentID = departmentID;
     }
 
     public String getFirstName() {
@@ -24,7 +20,9 @@ public class Employee {
         return lastName;
     }
 
-    public String getFullName() {return firstName + " " + lastName;}
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -39,21 +37,11 @@ public class Employee {
         return Objects.hash(firstName, lastName);
     }
 
-    public int getSalary() {
-        return salary;
-    }
-
-    public int getDepartmentID() {
-        return departmentID;
-    }
-
     @Override
     public String toString() {
         return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", salary=" + salary +
-                ", departmentID=" + departmentID +
+                "firstName='" + firstName + " + " +
+                ", lastName='" + lastName + " + " +
                 '}';
     }
 }
