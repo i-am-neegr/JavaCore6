@@ -45,4 +45,8 @@ public class DepartmentService implements DepartmentServiceInterface {
     public List<Employee> getEmployees(int departmentID) {
         return employeesStream(departmentID).toList();
     }
+
+    public int totalSalary(int departmentID) {
+        return employeesStream(departmentID).mapToInt(Employee::getSalary).sum();
+    }
 }
