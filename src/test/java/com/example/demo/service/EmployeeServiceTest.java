@@ -29,6 +29,8 @@ public class EmployeeServiceTest {
 
     @Test
     public void testRemoveEmployee() {
+        employeeService.add("Alain", "Delon");
+        employeeService.add("Ian", "Curtis");
         int employeesCounter = employeeService.getEmployees().size();
         employeeService.delete("Alain", "Delon");
         assert employeesCounter - 1 == employeeService.getEmployees().size();
@@ -38,6 +40,9 @@ public class EmployeeServiceTest {
 
     @Test
     public void testGetEmployee() {
+        employeeService.add("Alain", "Delon");
+        employeeService.add("Ian", "Curtis");
+        employeeService.add("James", "Hendrix");
         assert employeeService.getEmployee("James", "Hendrix").equals(new Employee("James", "Hendrix", 10_000, 1));
 
         Assertions.assertThrows(EmployeeNotFoundException.class, () -> employeeService.getEmployee("vova", "pupkin"));
